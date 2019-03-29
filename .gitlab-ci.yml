@@ -1,0 +1,16 @@
+image: node:latest
+
+pages:
+  stage: deploy
+  script:
+    - yarn
+    - yarn lint
+    - yarn build
+    - rm -r public
+    - mkdir public
+    - mv dist/* public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
