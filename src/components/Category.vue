@@ -19,7 +19,7 @@
 
 <script>
 import Draggable from "vuedraggable";
-import VModal from "vue-js-modal";
+import Modal from "vue-js-modal";
 import Task from "./Task";
 import CreateTask from "./CreateTask";
 
@@ -28,7 +28,7 @@ export default {
   props: ["category"],
   components: {
     Draggable,
-    VModal,
+    Modal,
     Task,
     CreateTask
   },

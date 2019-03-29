@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import Board from "./components/Board";
 import "./styles/main.scss";
 
