@@ -11,7 +11,7 @@
     <footer class="category__footer">
       <button class="button is-small" @click="showCreateTaskModal()">Add task</button>
     </footer>
-    <modal name="create-task-modal" height="auto">
+    <modal :name="modalId" height="auto">
       <create-task @create="createTask" @close="hideCreateTaskModal()"></create-task>
     </modal>
   </section>
@@ -19,7 +19,7 @@
 
 <script>
 import Draggable from "vuedraggable";
-import Modal from "vue-js-modal";
+import VModal from "vue-js-modal";
 import Task from "./Task";
 import CreateTask from "./CreateTask";
 
@@ -28,12 +28,17 @@ export default {
   props: ["category"],
   components: {
     Draggable,
-    Modal,
+    VModal,
     Task,
     CreateTask
   },
   data() {
-    return { createdTask: {} };
+    return { uid: Math.round(Math.random() * 1000000) };
+  },
+  computed: {
+    modalId() {
+      return `modal_${this.uid}`;
+    }
   },
   methods: {
     deleteTask(task) {
@@ -46,10 +51,10 @@ export default {
       this.category.tasks.push(newTask);
     },
     showCreateTaskModal() {
-      this.$modal.show("create-task-modal");
+      this.$modal.show(this.modalId);
     },
     hideCreateTaskModal() {
-      this.$modal.hide("create-task-modal");
+      this.$modal.hide(this.modalId);
     }
   }
 };

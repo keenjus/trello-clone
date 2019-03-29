@@ -6,6 +6,7 @@
 
 <script>
 import Board from "./components/Board";
+import "bulma/css/bulma.css";
 import "./styles/main.scss";
 
 export default {
